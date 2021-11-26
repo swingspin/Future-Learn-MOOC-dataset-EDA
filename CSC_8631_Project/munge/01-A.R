@@ -1,4 +1,18 @@
-# Example preprocessing script.
-view(cyber.security.3_video.stats)
-total_duration= sum(cyber.security.3_video.stats$video_duration)
-total_duration
+
+#pre-processing script.
+
+#adding new column to the 1st data file
+cyber.security.3_video.stats$run_month_year = "sept_2017"
+
+#adding new column to the 2nd data file
+cyber.security.7_video.stats$run_month_year = "sept_2018"
+
+#combining the datafiles for data exploration purposes
+#converting to a single data file
+Video_stats = union_all(cyber.security.3_video.stats,cyber.security.7_video.stats)
+
+#deleting the columns with no data entries
+Video_stats = select(Video_stats, -antarctica_views_percentage)
+Video_stats = select(Video_stats, -unknown_device_percentage)
+#arranging the data 
+Video_stats = arrange(Video_stats, step_position)
