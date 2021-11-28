@@ -16,3 +16,18 @@ Video_stats = select(Video_stats, -antarctica_views_percentage)
 Video_stats = select(Video_stats, -unknown_device_percentage)
 #arranging the data 
 Video_stats = arrange(Video_stats, step_position)
+
+#adding new column to the data file of run 5 i.e. runned in feb_2018
+cyber.security.5_video.stats$run_month_year = "feb_2018"
+
+Video_stats_Q1_Cycle02= union_all(cyber.security.3_video.stats,cyber.security.5_video.stats)
+
+#deleting the columns with no data entries
+Video_stats_Q1_Cycle02 = select(Video_stats_Q1_Cycle02, -antarctica_views_percentage)
+Video_stats_Q1_Cycle02 = select(Video_stats_Q1_Cycle02, -unknown_device_percentage)
+#arranging the data 
+Video_stats_Q1_Cycle02 = arrange(Video_stats_Q1_Cycle02, step_position)
+
+
+
+
