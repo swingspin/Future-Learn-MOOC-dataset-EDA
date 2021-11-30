@@ -29,5 +29,6 @@ Video_stats_Q1_Cycle02 = select(Video_stats_Q1_Cycle02, -unknown_device_percenta
 Video_stats_Q1_Cycle02 = arrange(Video_stats_Q1_Cycle02, step_position)
 
 
+Video_stats_Q2_Cycle01 = arrange(Video_stats, video_duration)
 
 
