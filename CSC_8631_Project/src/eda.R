@@ -44,16 +44,17 @@ drop_percentage
  # percentage = ((Video_stats$total_views[i]-Video_stats$total_views[i+1])/Video_stats$total_views[i])*100
 #)
 
-#average drop percentage 
+#average_drop percentage 
 average_drop = (sum(drop_percentage[,2])/13)
 #hence the average_drop shows the average drop in viewership from sept,2017 to sept,2018 
 
 #plotting the percentage_drop with respect to the step id of each part of the video lecture
 dropplot_1 = barplot(drop_percentage$percentage ~ drop_percentage$step_position, xlab = "step_position", ylab = "percentage")
+dropplot_1
 #Save the dropplot_1 in the graphs directory
 ggsave(file.path('graphs','dropplot_1.pdf'))
 #cycle 02
-#checking weather the yearly_drop from september,2017 to september,2018 has any correlation with mid_year_drop from september,2017 to february,2018
+#checking whether the yearly_drop from september,2017 to september,2018 has any correlation with mid_year_drop from september,2017 to february,2018
 #01-cycle 2 -Finding the average drop in viewership from sept,2017 to feb,2018
 
 #Graphical representation of total views based on courses for 2 different months with a gap of a year
@@ -83,6 +84,7 @@ drop_percentage_mid_yearly
 
 #average drop percentage 
 average_drope_mid_yearly = (sum(drop_percentage_mid_yearly[,2])/13)
+average_drope_mid_yearly
 #hence the average_drop shows the average drop in viewership from sept,2017 to feb,2018 
 
 #plotting the percentage_drop with respect to the step id of each part of the video lecture
@@ -111,9 +113,9 @@ cor(Video_stats_Q2_Cycle01[,3], Video_stats_Q2_Cycle01[,9:15])
 cor(Video_stats_Q1_Cycle02[,3], Video_stats_Q1_Cycle02[,9:15])
 
 #Q2_CYCLE-02
-#the detail in a particular video making it of less importance that people are leaving?
-#Using Correlation for - at which step id the people have left more by VIEWED LENGTH OF EACH Video by Percentage Data
-#further alternative study: as length of videos doesn't imply leaving,as resulted post Q2 CYCLE 1
+
+#Using Correlation on step_position and video_viewed_percentage for analysis and conclusions
+
 #Using correlation across each pre_loaded different months runned file
 cor(cyber.security.3_video.stats[,1], cyber.security.3_video.stats[,9:15])
 cor(cyber.security.5_video.stats[,1], cyber.security.5_video.stats[,9:15])
@@ -161,8 +163,8 @@ plot_G1
 ggsave(file.path('graphs','plot_G1.pdf'))
 
 #Plot_G1 Europe view percentage for each courses on different months
-plot_G2 = ggplot(Video_stats, aes(step_position, asia_views_percentage, color = run_month_year, size = 50)) + geom_point() +
-  ggtitle("Analysis of the courses based on views percentage from Asia region",)
+plot_G2 = ggplot(Video_stats, aes(step_position, asia_views_percentage, fill = viewed_onehundred_percent))+geom_col(position = 'dodge') + scale_fill_continuous(high = "#132B43", low = "#56B1F7") + labs(fill = "Viewed 100%") +
+  ggtitle("Analysis of the courses based on views percentage from Asia region")
 plot_G2
 #Save the plot_G2 in the graphs directory
 ggsave(file.path('graphs','plot_G2.pdf'))
@@ -174,12 +176,6 @@ plot_G3
 #Save the plot_G3 in the graphs directory
 ggsave(file.path('graphs','plot_G3.pdf'))
 
-#Plot_G1 Europe view percentage for each courses on different months
-plot_G4 = ggplot(Video_stats, aes(step_position, africa_views_percentage, color = run_month_year, size = 50)) + geom_point() +
-  ggtitle("Analysis of the courses based on views percentage from African region",)
-plot_G4
-#Save the plot_G4 in the graphs directory
-ggsave(file.path('graphs','plot_G4.pdf'))
 
 #cycle_02
 #Analysis of the courses based on views percentage from major devices used using graphical tool for summary-taking data_files of one year apart for exploration
@@ -196,13 +192,6 @@ plot_dv2 = ggplot(Video_stats, aes(total_views, mobile_device_percentage, color 
   ggtitle("Analysis of mobile users based on total views of the modules")
 #Save the plot_dv2 in the graphs directory
 ggsave(file.path('graphs','plot_dv2.pdf'))
-
-
-#Plot dv 3
-plot_dv3= ggplot(Video_stats, aes(total_views, tablet_device_percentage, color = run_month_year, size = total_views)) + geom_point() +
-  ggtitle("Analysis of tablet users based on total views of the modules")
-#Save the plot_dv3 in the graphs directory
-ggsave(file.path('graphs','plot_dv3.pdf'))
 
 
 #some more graphical analysis,to explore and understand data more by business perspective
