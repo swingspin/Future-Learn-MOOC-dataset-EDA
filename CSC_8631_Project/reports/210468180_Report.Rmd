@@ -31,26 +31,26 @@ library(dplyr)
 #Using library ProjectTemplate
 library('ProjectTemplate')
 #setting up the working directory of The Project 
-setwd("F:/data science/data exploratory module/New folder/CSC8631_PROJECT/CSC_8631_Project")
+#setwd("F:/data science/data exploratory module/New folder/CSC8631_PROJECT/CSC_8631_Project")
 #Using library ProjectTemplate
 library(ggplot2)
-
+options(repos="https://cran.rstudio.com" )
 #loading the data of the project to work on it
 #data named Cyber.security-video.stats
 load.project()
+source("src/eda.R")
 ```
 
 Whole dataset mainly consists of values encoded as quantitative variables. The first approach of the exploratory analysis is to calculate the average drop in viewership from sept,2017 in respect to  sept,2018 surveyed dataset. According to CRISP-DM methodology another cycle of analysis is done on checking whether the yearly_drop from september,2017 to september,2018 has any correlation with mid_year_drop from september,2017 to february,2018 by Finding the average drop/rise in viewership from sept,2017 compared to feb,2018.
 The datafiles are processed,analysed graphically and with help numerical analogies and numerical equations solving tools using the "dplyr" "ggplot" and "ProjectTemplate" R-packages.
 
 ### QUESTION_01-Finding the average drop in viewership.
-
+```{r  fig.align = 'center', out.width = "95%", fig.cap = "Analysis of Total views of the courses between surveyed-months,year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_j1.png"))
+```
+\newpage
 ```{r echo=TRUE}
 #cycle-01
-plot_j1 = ggplot(Video_stats, aes(step_position, total_views, fill = run_month_year, size=100))+
-geom_col(position = 'dodge') +
-ggtitle("Analysis of Total views of courses between months that are a year apart")
-plot_j1 
 
 drop_percentage = as.data.frame(matrix(nrow = 0, ncol = 2));
 for(i in 1:26){
@@ -64,11 +64,12 @@ row <- c(Video_stats$step_position[i],
 colnames(drop_percentage) <- c("step_position", "percentage")
 drop_percentage
 average_drop = (sum(drop_percentage[,2])/13)
-dropplot_1 = barplot(drop_percentage$percentage ~ drop_percentage$step_position, 
-                     xlab = "step_position", ylab = "percentage")
 
 ```
 
+```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of drop percentage of the courses between months that are a year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "dropplot_1.png"))
+```
 
 **Cycle 01_Que1**-Finding the average drop in viewership from sept,2017 in relation to sept,2018
 
@@ -78,13 +79,13 @@ dropplot_1 = barplot(drop_percentage$percentage ~ drop_percentage$step_position,
 
 * Through the use of drop percentage,average drop is calculated for the explored data file and was viewed that the viewership is dropped 47.35927% in september,2018 in comparision to september,2017
 
+#Q1-Cycle 02
+```{r  fig.align = 'center', out.width = "95%", fig.cap = "Analysis of Total views of the courses between months- approx half year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_j2.png"))
+```
+
 ```{r echo=TRUE}
 #Q1-Cycle 02
-plot_j2 = ggplot(Video_stats_Q1_Cycle02, aes(step_position, total_views, fill = run_month_year))+
-geom_col(position = 'dodge') + 
-ggtitle("Analysis of Total views of courses in approx half year apart months")
-plot_j2 
-
 drop_percentage_mid_yearly = as.data.frame(matrix(nrow = 0, ncol = 2));
 for(i in 1:26){
 if(i %% 2 != 0){
@@ -96,11 +97,12 @@ row <- c(Video_stats_Q1_Cycle02$step_position[i],
 colnames(drop_percentage_mid_yearly) <- c("step_position", "percentage")
 drop_percentage_mid_yearly
 average_drope_mid_yearly = (sum(drop_percentage_mid_yearly[,2])/13)
-dropplot_2 = barplot(drop_percentage_mid_yearly$percentage ~ drop_percentage_mid_yearly$step_position, 
-                     xlab = "step_position", ylab = "percentage")
-
-
 ```
+```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of drop percentage of the courses between months- approx half year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "dropplot_2.png"))
+```
+
+
 **Cycle 02_Que1**- Finding the average drop in viewership from sept,2017 to feb,2018
 
 Checking whether the pattern of yearly_drop from september,2017 to september,2018 has some relation with mid_year_drop from september,2017 to february,2018
@@ -118,7 +120,7 @@ Checking whether the pattern of yearly_drop from september,2017 to september,201
 OR
 2)It can be assessed and assumed that majority of the courses,if good,rise in the first half and then as usual the decrement is seen,as seen in here,which leads to thinking that company should move on positively and make more online videos on different topics and hence the business continues, also this fine way of online-teaching sustains and prevails with people can company both being benifitted.
 
-
+\newpage
 
 ### Q2.DEFINITE USE OF CORRELATION TO EXPLORE THE DATA and TO FIND CONCLUSIONS ON SEVERAL QUESTIONS.
 
@@ -179,25 +181,27 @@ for example according to data
 
 * **From business perspective**: it can be stated that Company providing online sessions have a good content and keeping this type of content level will benifit the people who are deeply interested in learnings like Cyber.security and simultaneously the company will also grow.
 
+* **More Analysis using Correlation**
+
 ```{r echo=TRUE}
 cor(Video_stats[,5], Video_stats[,7])
 cor(Video_stats_Q1_Cycle02[,5], Video_stats_Q1_Cycle02[,7])
 
 ```
-* **More Analysis using Correlation**
+
 * The index 5 and 7 from the code represents the two responses total_downloads and total_transcript_views respectively.
 * From this, its applicable to represent that the courses that are downloaded are mostly as a transcript type in all the files i.e. files runned in sept-2017,feb-2018 and sept,2018.
 
 With this numerical summaries, the data can be further analysed *graphically* also as:
-```{r echo=TRUE}
-plot_A = ggplot(Video_stats, aes(total_downloads, total_transcript_views, color = run_month_year)) + geom_line() + 
-ggtitle("Analysis of total downloads made as transcripts")
-plot_A
 
-plot_B = ggplot(Video_stats_Q1_Cycle02, aes(total_downloads, total_transcript_views, color = run_month_year)) + geom_line() + 
-ggtitle("Analysis of total downloads made as transcripts")
-plot_B
+```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of total downloads made as transcripts", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_A.png"))
 ```
+```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of total downloads made as transcript-that are half year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_B.png"))
+```
+
+\newpage
 
 ### EDA using graphical tool for analysis and TO FIND some conclusions.
 The graphical analysis is made with line graphs, points and bar plots, which helps to visualize and interpret
@@ -207,21 +211,18 @@ the data. The **ggplot2** library is used for this graphical analysis.
 **cycle_01**
 Analysis of the courses based on views percentage from major regions using graphical tool for summary-taking data_files of one year apart for exploration.
 
-```{r echo=TRUE}
-plot_G1 = ggplot(Video_stats, aes(step_position, europe_views_percentage, color = run_month_year, size = 50)) + geom_point() +
-  ggtitle("Analysis of the courses based on views percentage from Europe region",)
-plot_G1
-
+```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of the courses based on views percentage from Europe region", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_G1.png"))
 ```
 * From the plot, its significantly visible that the module did not made a much impact in the Europe
 region learners as the view percentage critically dropped during the september,2018 month compared to
 the month of September,2017.
 * Also it can be seen that percentage viewership in european region is quite healthy i.e. greater than 50%.
 
-```{r echo=TRUE}
-plot_G2 = ggplot(Video_stats, aes(step_position, asia_views_percentage, color = run_month_year, size = 50)) + geom_point() +
-  ggtitle("Analysis of the courses based on views percentage from Asia region",)
-plot_G2
+
+
+```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of the courses based on views percentage from Asia region", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_G2.png"))
 ```
 
 * The above bar plot represents the analysis made based on the modeules that are viewed ***100%*** from the Asia region. 
@@ -234,60 +235,58 @@ plot_G2
 
 
 
-```{r echo=TRUE}
-plot_G3 = ggplot(Video_stats, aes(step_position, north_america_views_percentage, color = run_month_year, size = 50)) + geom_point() +
-  ggtitle("Analysis of the courses based on views percentage from North America region",)
-plot_G3
+
+
+```{r fig.align = 'center', out.width = "70%", fig.cap = "Analysis of the courses based on views percentage from North America region", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_G3.png"))
 ```
 * The above bar plot represents the analysis made based on the modeules that are viewed  from the North American region. 
 * This plot completely suggest that the percentage amount of total viewers of the course in the north american region has significantly decreased in sept,2018 compared to sept,2017
 * Also the percentage viewership of the course in sept,2017 had a same range across the step_positioned videos,ranging between 10%-13%.
 
+
 **cycle_02**
 Analysis of the courses based on views percentage from major devices used using graphical tool for summary-taking data_files of one year apart for exploration
 
 
-```{r echo=TRUE}
-plot_dv1 = ggplot(Video_stats, aes(total_views, desktop_device_percentage, color = run_month_year, size = total_views)) + geom_point() +
-  ggtitle("Analysis of desktop users based on total views of the modules")
-plot_dv1
+```{r  fig.align = 'center', out.width = "70%", fig.cap = "Analysis of desktop users based on total views of the modules", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_dv1.png"))
 ```
+
 * The representation is based on the analysis made on the modules that are viewed using the desktop devices.
 * Based on the total views of the modules, the points represent that the learners viewed through the desktop devices for most important topics, whereas there is a shrinkage in desktop views for the courses which has less viewers.
 
-```{r echo=TRUE}
-plot_dv2 = ggplot(Video_stats, aes(total_views, mobile_device_percentage, color = run_month_year, size = total_views)) + geom_point() +
-  ggtitle("Analysis of mobile users based on total views of the modules")
-plot_dv2
+```{r  fig.align = 'center', out.width = "70%", fig.cap = "Analysis of mobile users based on total views of the modules", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_dv2.png"))
 ```
 * The representation is based on the analysis made on the modules that are viewed using the mobile devices.
 From the plot 2 things can be analysed that
 a)Percenatge of mobile device usage has significantly increased in september 2018 in comparision to seotember 2017
 b)The viewership has decreased in the following year compared to initial year-2017.
 
-## Some more graphical analysis,to explore and understand data more by business perspective
 
-```{r echo=TRUE}
-plot_x = ggplot(Video_stats) + geom_col(aes( run_month_year, total_downloads, fill=factor(step_position)), position="dodge") + labs(fill = "Course modules") +
-  ggtitle("Analysis of modules downloaded in different months")
-plot_x
+\newpage
+## Some more graphical analysis,to explore and understand data more by business perspective
+```{r  fig.align = 'center', out.width = "90%", fig.cap = "Analysis of modules downloaded in different months that are a year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_x.png"))
 ```
+
 * This bar chart clearly shows that there is a decrement in course downloads in sept,2018 month compared to
 that of the sept,2017 month.
 * This clearly represents that the learners who wanted to perceive this course have already enrolled and completed the course before sept,2018 run or else learners are less interested in the contents of the course as compared to period of sept,2017
 * There was depletion in every topic-course that was being downloaded.
 
 
-```{r echo=TRUE}
-plot_y = ggplot(Video_stats_Q1_Cycle02) + geom_col(aes( run_month_year, total_downloads, fill=factor(step_position)), position="dodge") + labs(fill = "Course modules") +
-  ggtitle("Analysis of modules downloaded in different months")
-plot_y
+```{r fig.align = 'center', out.width = "90%", fig.cap = "Analysis of modules downloaded in different months that are half year apart", echo = FALSE}
+knitr::include_graphics(here::here("graphs", "plot_y.png"))
 ```
 * This bar chart clearly shows that there is a relative increase in course downloads in feb,2018 month compared to
 that of the sept,2017 month.
 * This clearly represents that the learners are interested in the contents of the course and they downloaded
 the contents for further usage purposes.
 * There was seen a depletion in some topic-course that was being downloaded compared to the previous month but overall the course reach had a positive growth rate.
+
+\newpage
 
 # Reproducibility
 
