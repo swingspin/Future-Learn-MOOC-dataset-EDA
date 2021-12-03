@@ -5,7 +5,7 @@ library('ProjectTemplate')
 #Using library ProjectTemplate
 library(ggplot2)
 #setting up the working directory of The Project 
-#setwd("F:/data science/data exploratory module/New folder/CSC8631_PROJECT/CSC_8631_Project")
+setwd("F:/data science/data exploratory module/New folder/CSC8631_PROJECT/CSC_8631_Project")
 #loading the data of the project to work on it
 #data named Cyber.security-video.stats
 load.project()

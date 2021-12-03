@@ -1,7 +1,8 @@
 ---
 title: "210468180_Report"
 author: "Parth Umeshkumar Shah"
-date: "30/11/2021"
+module: "Data Management and Exploratory Data Analysis - CSC8631"
+date: "03/12/2021"
 output: pdf_document
 ---
 
@@ -12,7 +13,7 @@ knitr::opts_knit$set(root.dir = normalizePath('..'))
 
 ## Introduction
 
-With the rise in specialization in the cyber security,there is an increase in interest of learning it for career growth in candidates. With the more day in and day out usage of Internet and due to unprecended times most of the Universities have decided to make the course available via online sessions.As the course is delivered via online mode, there might be some difficulties, some issues which could be faced by both the learners and the professors who are handling the modules.In order to make the online sessions more comfortable and to make the students get used to it,like they can view the course materials whenever they want etc. These online learnings are recorded in order to improve the course handling. The online activities of enrollments, survey response, leaving survey response, question response, step activity and statistics of viewing the videos are recorded and stored in the Future Learn MOOC dataset.
+With the rise in specialization in the cyber security,there is an increase in interest of learning it for career growth in candidates. With the more day in and day out usage of Internet and due to unprecedented times most of the Universities have decided to make the course available via online sessions.As the course is delivered via online mode, there might be some difficulties, some issues which could be faced by both the learners and the professors who are handling the modules.In order to make the online sessions more comfortable and to make the students get used to it,like they can view the course materials whenever they want etc. These online learning are recorded in order to improve the course handling. The online activities of enrollments, survey response, leaving survey response, question response, step activity and statistics of viewing the videos are recorded and stored in the Future Learn MOOC dataset.
 
 The observations made on these data are developed based on different simulations on a particular period of time. This report consists of a analysis that is made on the statistics of viewing of the videos. The data consists of various responses of different course modules like video duration, total views of the courses,views based on the hardware devices,views based on the regions  and much more. With these responses an exploratory data analysis is prepared here to get a better insight of the  statistics of viewing of the videos using different numerical and graphical analogies.
 
@@ -20,8 +21,8 @@ The observations made on these data are developed based on different simulations
 
 Before proceeding with the analysis on data it is inspected to verify whether the structure of the data is good for analysis and whether the data has unknown values in some of the responses. These unknown values are removed based on the data cleaning process and the structure is also changed for the columns which are required for analysis. 
 
-Here for analysis three data sets are explored which are runned in september-2017,february-2018 and september-2018 respectively.
-This data sets are chosen such that analysis of data at time interval of one year apart and half year apart can be seen and explored,through such distinct datasets a relation can be explored in upgrade or downgrade of the online sessions in a year duration whuch can be essential in business modelling in future for the company.Hence,three datafiles have been used in the analysis process which had captured and developed datasets which were half year and a year apart,2 new files are combination of datasets with one having merge data of september-2017,february-2018 and another consisting of a year apart data i.e. september-2017 and september-2018,files in here are stored as a dataframe. 
+Here for analysis three data sets are explored which are runned in September-2017,February-2018 and September-2018 respectively.
+This data sets are chosen such that analysis of data at time interval of one year apart and half year apart can be seen and explored,through such distinct datasets a relation can be explored in upgrade or downgrade of the online sessions in a year duration which can be essential in business modelling in future for the company.Hence,three datafiles have been used in the analysis process which had captured and developed datasets which were half year and a year apart,2 new files are combination of datasets with one having merge data of September-2017,February-2018 and another consisting of a year apart data i.e. September-2017 and September-2018,files in here are stored as a dataframe. 
 
 Some assumptions are made which were missing in the dataset such as the year and month at which the responses were recorded. These two columns where inserted into the dataset and they are used in the analysis process. Since there were less observations.Also datasets are cleaned with removing the columns having null values,further datafiles are arranged as per the exploratory questions demanded.
 
@@ -41,7 +42,7 @@ load.project()
 source("src/eda.R")
 ```
 
-Whole dataset mainly consists of values encoded as quantitative variables. The first approach of the exploratory analysis is to calculate the average drop in viewership from sept,2017 in respect to  sept,2018 surveyed dataset. According to CRISP-DM methodology another cycle of analysis is done on checking whether the yearly_drop from september,2017 to september,2018 has any correlation with mid_year_drop from september,2017 to february,2018 by Finding the average drop/rise in viewership from sept,2017 compared to feb,2018.
+Whole dataset mainly consists of values encoded as quantitative variables. The first approach of the exploratory analysis is to calculate the average drop in viewership from sept,2017 in respect to  Sept,2018 surveyed dataset. According to CRISP-DM methodology another cycle of analysis is done on checking whether the yearly_drop from September,2017 to September,2018 has any correlation with mid_year_drop from September,2017 to February,2018 by Finding the average drop/rise in viewership from sept,2017 compared to feb,2018.
 The datafiles are processed,analysed graphically and with help numerical analogies and numerical equations solving tools using the "dplyr" "ggplot" and "ProjectTemplate" R-packages.
 
 ### QUESTION_01-Finding the average drop in viewership.
@@ -67,22 +68,31 @@ average_drop = (sum(drop_percentage[,2])/13)
 
 ```
 
+
 ```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of drop percentage of the courses between months that are a year apart", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "dropplot_1.png"))
 ```
 
-**Cycle 01_Que1**-Finding the average drop in viewership from sept,2017 in relation to sept,2018
 
-* The plot_j1 represents of total views based on courses for 2 different months with a gap of a year was inserted for visualization purpose.
+**Cycle 01_Que1-Finding the average drop in viewership from sept,2017 in relation to sept,2018**
+
+* **Figure 1** represents of total views based on courses for 2 different months with a gap of a year was inserted for visualization purpose.
 
 * Created a data frame named drop_percentage and initialized a for-loop for calculation of drop-percentage such that the data of it is stored in a 2 column data frame consisting of  drop percentage for each step-position.
 
-* Through the use of drop percentage,average drop is calculated for the explored data file and was viewed that the viewership is dropped 47.35927% in september,2018 in comparision to september,2017
+* Through the use of drop percentage,average drop is calculated for the explored data file and was viewed that the viewership is dropped 47.35927% in september,2018 in comparision to september,2017-refer **Figure 2**
 
-#Q1-Cycle 02
+
+
+ **Q1-Cycle 02**
+ 
+ 
 ```{r  fig.align = 'center', out.width = "95%", fig.cap = "Analysis of Total views of the courses between months- approx half year apart", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_j2.png"))
 ```
+
+**Cycle 02_Que1- Finding the average drop in viewership from Sept,2017 to Feb,2018**
+
 
 ```{r echo=TRUE}
 #Q1-Cycle 02
@@ -103,22 +113,23 @@ knitr::include_graphics(here::here("graphs", "dropplot_2.png"))
 ```
 
 
-**Cycle 02_Que1**- Finding the average drop in viewership from sept,2017 to feb,2018
+**Checking whether the pattern of yearly_drop from september,2017 to september,2018 has some relation with mid_year_drop from september,2017 to february,2018**
 
-Checking whether the pattern of yearly_drop from september,2017 to september,2018 has some relation with mid_year_drop from september,2017 to february,2018
-
-* The plot_j2 represents of total views based on courses for 2 different months with a gap of a 5 months(approx = half year period) was inserted for visualization purpose.
+* **Figure 3** represents of total views based on courses for 2 different months with a gap of a 5 months(approx = half year period) was inserted for visualization purpose.
 
 * Created a data frame initialized a for-loop for calculation of drop-percentage for files half year apart such that the data of it is stored in a 2 column data frame consisting of  drop percentage for each step-position.
 
-* Through the use of drop percentage,average drop is calculated for the explored data file and was viewed that the viewership was rised 10.46227 in February,2018 in comparision to september,2017
+* Through the use of drop percentage,average drop is calculated for the explored data file and was viewed that the viewership was increased 10.46227 in February,2018 in comparison to September,2017-refer **Figure 4**
 
-* From this two analyzation it can be assumed that in comparision to Sept,2017 the viewership increased in feb,2018 which shows the increasing interest of people in Cyber Security field and the drop in sept,2018 in comparision to sept,2017 shows that maybe people who want to percieve further in Cyber Security has already enrolled and completed the course or also it can be assumed that the content available has been mkoved to a saturated zone where people who has interest in this filed are already known to this much of information.
+* From this two analysation it can be assumed that in comparison to Sept,2017 the viewership increased in feb,2018 which shows the increasing interest of people in Cyber Security field and the drop in sept,2018 in comparison to sept,2017 shows that maybe people who want to perceive further in Cyber Security has already enrolled and completed the course or also it can be assumed that the content available has been moved to a saturated zone where people who has interest in this filed are already known to this much of information.
 
 **From the view of Business perspective**:
-1) It can be assumed and can be said that more additional step-units if added or more marketing is done may we see a rise in future runs. 
+
+* 1) It can be assumed and can be said that more additional step-units if added or more marketing is done may we see a rise in future runs. 
+
 OR
-2)It can be assessed and assumed that majority of the courses,if good,rise in the first half and then as usual the decrement is seen,as seen in here,which leads to thinking that company should move on positively and make more online videos on different topics and hence the business continues, also this fine way of online-teaching sustains and prevails with people can company both being benifitted.
+
+* 2)It can be assessed and assumed that majority of the courses,if good,rise in the first half and then as usual the decrement is seen,as seen in here,which leads to thinking that company should move on positively and make more online videos on different topics and hence the business continues, also this fine way of online-teaching sustains and prevails with people can company both being benefitted.
 
 \newpage
 
@@ -138,7 +149,9 @@ cor(Video_stats_Q1_Cycle02[,3], Video_stats_Q1_Cycle02[,9:15])
 ```
 
 This approach to analysis of the data based on the numerical process is to summarize the dataset to explore whether
+
 **"More people left at less percentage because of the length of the VIDEO that are availabe in the course?"**
+
 Summary() function is called to explore on the data sets of % of people have left after a definite % of video is watched inorder to get the central tendency.By calling the summary() function over the datasets the central tendency is calculated for set of responses which would be easy for analysing.
 
 **Q2_CYCLE-01 analysis**-
@@ -146,7 +159,7 @@ Have more people left at less percentage because of the length of the VIDEO?
 
 * The central tendancy is calculated for the responses that are recorded based on it, a general trend of decrease in number of viewers of each video is seen,which proves that approx nearby 40% of people skips videos till they reach 100% length of it. 
 
-- As the above statement is an assumption seen we correlated the data of videdo viewed percentage wise with video duration across all the three runs of sept-2017,feb-2018 and sept,2018 and we got to see a pattern as follows :
+- As the above statement is an assumption seen we correlated the data of video viewed percentage wise with video duration across all the three runs of sept-2017,feb-2018 and sept,2018 and we got to see a pattern as follows :
 
 -- All the three data files of different runs shows a negative Co-relation between the video_duration and the video-viewed percentage  i.e. (viewed_five_percent, viewed_ten_percent, viewed_twentyfive_percent, viewed_fifty_percent, viewed_seventyfive_percent, viewed_ninetyfive_percent, viewed_onehundred_percent) files.
 
@@ -154,10 +167,10 @@ Have more people left at less percentage because of the length of the VIDEO?
 
 For business purposes,also explored taking the merged files of data across one year apart runned file and half year apart runned files,the same pattern of negative co_relation is seen.
 
-* Hence it can be assumed that if we make more creative short individual topic videos,it migh help people to continue with the course as many people who have started have never reached the end of particular video.
+* **Hence it can be assumed that if we make more creative short individual topic videos,it might help people to continue with the course as many people who have started have never reached the end of particular video.**
 
 ```{r echo=TRUE}
-#Q2_CYCLE-01 analysis 
+#Q2_CYCLE-02 analysis 
 
 cor(cyber.security.3_video.stats[,1], cyber.security.3_video.stats[,9:15])
 cor(cyber.security.5_video.stats[,1], cyber.security.5_video.stats[,9:15])
@@ -169,19 +182,20 @@ cor(Video_stats_Q1_Cycle02[,1], Video_stats_Q1_Cycle02[,9:15])
 ```
 **Q2_CYCLE-02**
 
-With use of correlation process here analysis is done on step_position and video_viewed_percentage wise for conclusions. 
+With use of correlation process here analysis is done on step_position and video_viewed_percentage wise for conclusions.
 
-* As analysed running the above specified code across the 3 loaded data files we can draw attention on the trend that with increase in step_position the video_viewed_percentagewise of less percent data decreases 
-for example according to data
--with increase in step_position the 5% viewed data decreases,hence generally people who are interested in watching watches more and people who are less intersted leave in the early step_positioned videos only. 
 
-* This assumption grows strong by seeing the correlation data trends of increase in step_position leads to increase in the video_viewed_percentagewise of more percent data column.
+* As analysed running the above specified code across the 3 loaded data files we can draw attention on the trend that with increase in step_position the video_viewed_percentage-wise of less percent data decreases 
 for example according to data
--with increase in step_position the 50%,75%,95%,100% viewed data generally found increasing,hence the assumption that generally people who are interested in watching watches more and people who are less interested leave in the early step_positioned videos onlygrows strong.
+-with increase in step_position the 5% viewed data decreases,hence generally people who are interested in watching watches more and people who are less interested leave in the early step_positioned videos only. 
+
+* This assumption grows strong by seeing the correlation data trends of increase in step_position leads to increase in the video_viewed_percentage-wise of more percent data column.
+for example according to data
+-with increase in step_position the 50%,75%,95%,100% viewed data generally found increasing,hence the assumption that generally people who are interested in watching watches more and people who are less interested leave in the early step_positioned videos only grows strong.
 
 * **From business perspective**: it can be stated that Company providing online sessions have a good content and keeping this type of content level will benifit the people who are deeply interested in learnings like Cyber.security and simultaneously the company will also grow.
 
-* **More Analysis using Correlation**
+##  **More Analysis using Correlation**
 
 ```{r echo=TRUE}
 cor(Video_stats[,5], Video_stats[,7])
@@ -192,7 +206,7 @@ cor(Video_stats_Q1_Cycle02[,5], Video_stats_Q1_Cycle02[,7])
 * The index 5 and 7 from the code represents the two responses total_downloads and total_transcript_views respectively.
 * From this, its applicable to represent that the courses that are downloaded are mostly as a transcript type in all the files i.e. files runned in sept-2017,feb-2018 and sept,2018.
 
-With this numerical summaries, the data can be further analysed *graphically* also as:
+With this numerical summaries, the data can be further analysed **graphically** also as:
 
 ```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of total downloads made as transcripts", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_A.png"))
@@ -214,9 +228,11 @@ Analysis of the courses based on views percentage from major regions using graph
 ```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of the courses based on views percentage from Europe region", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_G1.png"))
 ```
+* **Figure 7**
 * From the plot, its significantly visible that the module did not made a much impact in the Europe
 region learners as the view percentage critically dropped during the september,2018 month compared to
 the month of September,2017.
+
 * Also it can be seen that percentage viewership in european region is quite healthy i.e. greater than 50%.
 
 
@@ -224,7 +240,7 @@ the month of September,2017.
 ```{r  fig.align = 'center', out.width = "80%", fig.cap = "Analysis of the courses based on views percentage from Asia region", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_G2.png"))
 ```
-
+* **Figure 8**
 * The above bar plot represents the analysis made based on the modeules that are viewed ***100%*** from the Asia region. 
 
 * From this graph its easy to interpret that above **50%** of the learners have viewed most of the modules completely. 
@@ -240,6 +256,7 @@ knitr::include_graphics(here::here("graphs", "plot_G2.png"))
 ```{r fig.align = 'center', out.width = "70%", fig.cap = "Analysis of the courses based on views percentage from North America region", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_G3.png"))
 ```
+* **Figure 9**
 * The above bar plot represents the analysis made based on the modeules that are viewed  from the North American region. 
 * This plot completely suggest that the percentage amount of total viewers of the course in the north american region has significantly decreased in sept,2018 compared to sept,2017
 * Also the percentage viewership of the course in sept,2017 had a same range across the step_positioned videos,ranging between 10%-13%.
@@ -270,7 +287,7 @@ b)The viewership has decreased in the following year compared to initial year-20
 ```{r  fig.align = 'center', out.width = "90%", fig.cap = "Analysis of modules downloaded in different months that are a year apart", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_x.png"))
 ```
-
+* **Figure 12**
 * This bar chart clearly shows that there is a decrement in course downloads in sept,2018 month compared to
 that of the sept,2017 month.
 * This clearly represents that the learners who wanted to perceive this course have already enrolled and completed the course before sept,2018 run or else learners are less interested in the contents of the course as compared to period of sept,2017
@@ -280,6 +297,7 @@ that of the sept,2017 month.
 ```{r fig.align = 'center', out.width = "90%", fig.cap = "Analysis of modules downloaded in different months that are half year apart", echo = FALSE}
 knitr::include_graphics(here::here("graphs", "plot_y.png"))
 ```
+* **Figure 13**
 * This bar chart clearly shows that there is a relative increase in course downloads in feb,2018 month compared to
 that of the sept,2017 month.
 * This clearly represents that the learners are interested in the contents of the course and they downloaded
@@ -304,4 +322,13 @@ the contents for further usage purposes.
 # Conclusion
 
 After a brief analysis and explroation of the data sets available, it can be said that the course modules are quite engaging for the learners considering the number of downloads of the course materials and other aspects. The downloads depicts that the learners want to use it for reference later or share with other people. The length of video however, at times makes the content lose it’s appeal on the viewers and they tend to not finish the course till the very end. More information about the leaving responses of such learner or enrollement of the learners from time to time can be gained through the leaving response surveys and enrollment surveys conducted which is for now out of the scope of this particular analysis.
+
+# Refrences.
+
+* 1 https://www.ibm.com/docs/en/spss-modeler/SaaS?topic=dm-crisp-help-overview
+* 2 https://www.nimblecoding.com/data-mining-process-crisp-dm/
+* 3 Ford, C., 2021. Data Wrangling in R: Combining, Merging and Reshaping Data. [online] Clay-
+ford.github.io. Available at: https://clayford.github.io/dwir/dwr_05_combine_merge_rehsape_
+data.html [Accessed 3 December 2021].
+* 4 https://ggplot2.tidyverse.org.
 
