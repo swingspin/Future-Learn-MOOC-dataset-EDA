@@ -1,0 +1,65 @@
+commit 706efe59e218c7645c0e5ae7ec8784709516a171
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Fri Dec 3 14:57:49 2021 +0000
+
+    final commit
+
+commit 088e54c126e9cba793969768b03ef3569ecb0b7b
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Fri Dec 3 14:53:10 2021 +0000
+
+    FINAL COMMIT with loaded necessary files,reports and ppt with audio
+
+commit 39b720c3bd20d32934540b0990d5714add8b229f
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Thu Dec 2 21:44:41 2021 +0000
+
+    use of here library,use of png files and arranging the markdown file and ggplots
+
+commit 4dec30442dd98fc3324594ca84ec965f8e3b3686
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Wed Dec 1 21:18:23 2021 +0000
+
+    completing analysis and progressing with report
+
+commit b196dfe1b97f8c6df273827edf47474d82b3c6ac
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Tue Nov 30 21:50:46 2021 +0000
+
+    EDA Q3 cycle,saving graphs in sub-directory
+
+commit 26695be2b6e4b6dab140c56c39465ef4163de2f3
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Tue Nov 30 14:53:37 2021 +0000
+
+    using correlation for Q2 to explore data
+
+commit 2d146f457a4c763d8e81095b9305f71da478b02e
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Sun Nov 28 20:23:53 2021 +0000
+
+    Commit : Q1 Cycle 02,mid year views drop
+
+commit a40a733d8d89a29d731dfd28f1fc9ae25af5173d
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Fri Nov 26 22:35:13 2021 +0000
+
+    commit :pre processing and 1st time analysis of data
+
+commit 2f01b8990a776d0e26add7eb8b1d99d2ab6000ae
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Fri Nov 26 18:16:44 2021 +0000
+
+    imprting data for first commit to the project
+
+commit 917c4f295c280c314bb03e4fd7e78c7703ca68f9
+Author: swingspin <parthshah77777.ps@gmail.com>
+Date:   Thu Nov 25 23:22:29 2021 +0000
+
+    commit
+
+commit 9d2f1cbbab9c3a43f6ef53e5446c73d498335402
+Author: swingspin <87119030+swingspin@users.noreply.github.com>
+Date:   Wed Nov 24 18:51:27 2021 +0000
+
+    Initial commit
